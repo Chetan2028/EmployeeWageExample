@@ -30,7 +30,9 @@ namespace EmployeeWage
         /// <param name="args">The arguments.</param>
         static void Main(string[] args)
         {
+            ///Create a reference of Program class
             Program program = new Program();
+            ///Call the function
             program.EmployeeCheck();
         }
     }
