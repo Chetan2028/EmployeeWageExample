@@ -5,7 +5,8 @@ namespace EmployeeWage
     class Program
     {
         ///Constants
-        const int IS_PRESENT = 1;
+        const int IS_FULL_TIME = 2;
+        const int IS_PART_TIME = 1;
         const int EMPLOYEE_WAGE_PER_HOUR = 20;
 
         ///Variables
@@ -18,11 +19,16 @@ namespace EmployeeWage
         {
             ///Create a reference of Random class
             Random random = new Random();
-            ///random function generates two values and checks the condition
-            if(random.Next(2) == IS_PRESENT)
+            ///random function generates three values and checks the condition
+            if(random.Next(0,3) == IS_FULL_TIME)
             {
                 employeeHours = 8;
-                Console.WriteLine("Employee is Present");
+                Console.WriteLine("Employee is Full Time");
+            }
+            else if(random.Next(0,3) == IS_PART_TIME)
+            {
+                employeeHours = 4;
+                Console.WriteLine("Employee is Part Time");
             }
             else
             {
