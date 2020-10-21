@@ -12,13 +12,35 @@ namespace EmployeeWage
         ///Variables
         int employeeHours = 0;
 
+        ///Create a reference of Random class
+        Random random = new Random();
+
+        /// <summary>
+        /// Calculates the employee wage using switch statement
+        /// </summary>
+        public void CalculateWageUsingSwitch()
+        {
+            switch (random.Next(0, 3))
+            {
+                case 2:
+                    Console.WriteLine("Employee is Full Time");
+                    employeeHours = 8;
+                    break;
+                case 1:
+                    Console.WriteLine("Employee is Part Time");
+                    employeeHours = 4;
+                    break;
+                default:
+                    Console.WriteLine("Employee is Absent");
+                    break;
+            }
+            Console.WriteLine("Employee Wage : " + employeeHours * EMPLOYEE_WAGE_PER_HOUR);
+        }
         /// <summary>
         /// Checks the employee presence and calculates the wage 
         /// </summary>
         public void EmployeeCheckAndWageCalculator()
         {
-            ///Create a reference of Random class
-            Random random = new Random();
             ///random function generates three values and checks the condition
             if(random.Next(0,3) == IS_FULL_TIME)
             {
@@ -44,8 +66,8 @@ namespace EmployeeWage
         {
             ///Create a reference of Program class
             Program program = new Program();
-            ///Call the function
-            program.EmployeeCheckAndWageCalculator();
+            ///Call the function to calculate wage using switch statement
+            program.CalculateWageUsingSwitch();
         }
     }
 }
