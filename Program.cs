@@ -9,14 +9,44 @@ namespace EmployeeWage
         const int IS_PART_TIME = 1;
         const int EMPLOYEE_WAGE_PER_HOUR = 20;
         const int NUMBER_OF_WORKING_DAYS = 20;
+        const int MAXIMUM_WORKING_DAYS = 20;
+        const int MAXIMUM_WORKING_HOURS = 100;
 
         ///Variables
         int employeeHours = 0;
         int totalSalary = 0;
+        int total = 0;
+        int totalWorkingDays = 0;
+        int totalWorkingHours = 0;
+        int salary = 0;
 
-        ///Create a reference of Random class
+        ///Create a reference of Random class globally so that it an used wherever wanted
         Random random = new Random();
 
+        public void WagesTillConditionIsReached()
+        {
+            while(totalWorkingDays <= MAXIMUM_WORKING_DAYS && totalWorkingHours <= MAXIMUM_WORKING_HOURS)
+            {
+                totalWorkingDays++;
+                if (random.Next(0, 3) == IS_FULL_TIME)
+                {
+                    employeeHours = 8;
+                }
+                else if (random.Next(0, 3) == IS_PART_TIME)
+                {
+                    employeeHours = 4;
+                }
+                else
+                {
+                    employeeHours = 0;
+                    totalWorkingDays--;
+                }
+                totalWorkingHours += employeeHours;
+                salary = EMPLOYEE_WAGE_PER_HOUR * employeeHours;
+                total+= salary;
+            }
+            Console.WriteLine("TOtal salary is : " + total);
+        }
         public void CalculateMonthlyWages()
         {
             for (int index = 1; index <= NUMBER_OF_WORKING_DAYS; index++)
@@ -90,12 +120,14 @@ namespace EmployeeWage
         {
             ///Create a reference of Program class
             Program program = new Program();
-            ///Call the function
+            ///Call the function to calculate employee wage
             program.EmployeeCheckAndWageCalculator();
-            ///Call the function 
+            ///Call the function to calculate employee wage using switch statement
             program.CalculateWageUsingSwitch();
             ///Call the function to calculate monthly wage
             program.CalculateMonthlyWages();
+            ///Call the function to calculate wage until condition is reached
+            program.WagesTillConditionIsReached();
         }
     }
 }
