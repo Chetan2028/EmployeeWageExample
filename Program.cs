@@ -90,9 +90,9 @@ namespace EmployeeWage
         {
             ///Create a reference of Program class
             Program program = new Program();
-            ///Call the function
+            ///Call the function to calculate wage
             program.EmployeeCheckAndWageCalculator();
-            ///Call the function 
+            ///Call the function to calculate wage using switch statement
             program.CalculateWageUsingSwitch();
             ///Call the function to calculate monthly wage
             program.CalculateMonthlyWages();
