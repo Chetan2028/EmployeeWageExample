@@ -22,7 +22,9 @@ namespace EmployeeWage
 
         ///Create a reference of Random class globally so that it an used wherever wanted
         Random random = new Random();
-
+        /// <summary>
+        /// To Compute Wages till a Maximum working days and maximum working hours is reached
+        /// </summary>
         public void WagesTillConditionIsReached()
         {
             while(totalWorkingDays <= MAXIMUM_WORKING_DAYS && totalWorkingHours <= MAXIMUM_WORKING_HOURS)
@@ -47,6 +49,9 @@ namespace EmployeeWage
             }
             Console.WriteLine("TOtal salary is : " + total);
         }
+        /// <summary>
+        /// To Calculate the monthly wages.
+        /// </summary>
         public void CalculateMonthlyWages()
         {
             for (int index = 1; index <= NUMBER_OF_WORKING_DAYS; index++)
