@@ -13,17 +13,30 @@ namespace EmployeeWage
         private int numOfCompany = 0;
         private CompanyEmpWage[] companyEmpWageArray;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EmployeeWageArray"/> class.
+        /// </summary>
         public EmployeeWageArray()
         {
             this.companyEmpWageArray = new CompanyEmpWage[10];
         }
 
+        /// <summary>
+        /// Adds the company to an array
+        /// </summary>
+        /// <param name="company">The company.</param>
+        /// <param name="empRatePerHour">The emp rate per hour.</param>
+        /// <param name="maxWorkingDays">The maximum working days.</param>
+        /// <param name="maxWorkingHours">The maximum working hours.</param>
         public void addCompany(string company, int empRatePerHour, int maxWorkingDays, int maxWorkingHours)
         {
             companyEmpWageArray[this.numOfCompany] = new CompanyEmpWage(company, empRatePerHour, maxWorkingDays, maxWorkingHours);
             numOfCompany++;
         }
 
+        /// <summary>
+        /// This method calculates the wage
+        /// </summary>
         public void WageCalculation()
         {
             for (int index = 0; index < numOfCompany; index++)
@@ -33,6 +46,11 @@ namespace EmployeeWage
             }
         }
 
+        /// <summary>
+        /// Wages the calculation.
+        /// </summary>
+        /// <param name="companyEmpWage">The company emp wage.</param>
+        /// <returns></returns>
         private int WageCalculation(CompanyEmpWage companyEmpWage)
         {
             ///Variables
