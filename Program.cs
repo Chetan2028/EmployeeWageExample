@@ -4,18 +4,17 @@ namespace EmployeeWage
 {
     class Program
     {
-        ///Constants
-        const int IS_PRESENT = 1;
-
         /// <summary>
-        /// Checks the employee presence
+        /// Defines the entry point of the application.
         /// </summary>
-        public void EmployeeCheck()
+        /// <param name="args">The arguments.</param>
+        static void Main(string[] args)
         {
+            const int IS_PRESENT = 1;
             ///Create a reference of Random class
             Random random = new Random();
-            ///random function generates two values and checks the condition
-            if(random.Next(2) == IS_PRESENT)
+            ///random generates two values and check for the condition
+            if (random.Next(2) == IS_PRESENT)
             {
                 Console.WriteLine("Employee is Present");
             }
@@ -23,17 +22,6 @@ namespace EmployeeWage
             {
                 Console.WriteLine("Employee is Absent");
             }
-        }
-        /// <summary>
-        /// Defines the entry point of the application.
-        /// </summary>
-        /// <param name="args">The arguments.</param>
-        static void Main(string[] args)
-        {
-            ///Create a reference of Program class
-            Program program = new Program();
-            ///Call the function
-            program.EmployeeCheck();
         }
     }
 }
