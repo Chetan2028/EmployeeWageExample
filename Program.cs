@@ -7,16 +7,14 @@ namespace EmployeeWage
         ///Constants
         const int IS_FULL_TIME = 2;
         const int IS_PART_TIME = 1;
-        const int EMPLOYEE_WAGE_PER_HOUR = 20;
-        const int NUMBER_OF_WORKING_DAYS_PER_MONTH = 20;
-        const int MAXIMUM_WORKING_HOURS = 100;
-        const int MAXIMUM_WORKING_DAYS = 20;
-
         /// <summary>
-        /// Defines the entry point of the application.
+        /// This method computes the wage for multiple companies
         /// </summary>
-        /// <param name="args">The arguments.</param>
-        static void Main(string[] args)
+        /// <param name="companyName"></param>
+        /// <param name="empRatePerHour"></param>
+        /// <param name="numberOfWorkingDays"></param>
+        /// <param name="maxHoursPerMonth"></param>
+        public void computeWage(string companyName, int empRatePerHour, int numberOfWorkingDays, int maxHoursPerMonth)
         {
             ///Variables
             int employeeHours = 0;
@@ -27,10 +25,10 @@ namespace EmployeeWage
             Random random = new Random();
 
             ///Iterating till a certain condition is reached
-            while (totalWorkingDays <= MAXIMUM_WORKING_DAYS && totalWorkingHours <= MAXIMUM_WORKING_HOURS)
+            while (totalWorkingDays <= numberOfWorkingDays && totalWorkingHours <= maxHoursPerMonth)
             {
                 totalWorkingDays++;
-                ///Generates three random values and according to the condition assigns employee working hours using switchh statement
+                ///Generates three random values and according to the condition assigns employee working hours using switch statement
                 switch (random.Next(0, 3))
                 {
                     case IS_FULL_TIME:
@@ -46,7 +44,17 @@ namespace EmployeeWage
                 }
                 totalWorkingHours += employeeHours;
             }
-            Console.WriteLine("Employee Wage : " + EMPLOYEE_WAGE_PER_HOUR * totalWorkingHours);
+            Console.WriteLine("Employee Wage for " + companyName +" is " + empRatePerHour * totalWorkingHours);
+        }
+        /// <summary>
+        /// Defines the entry point of the application.
+        /// </summary>
+        /// <param name="args">The arguments.</param>
+        static void Main(string[] args)
+        {
+            Program program = new Program();
+            program.computeWage("Apple", 20, 24, 35);
+            program.computeWage("Google", 35, 20, 20);
         }
     }
 }
