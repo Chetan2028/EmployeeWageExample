@@ -9,43 +9,32 @@ namespace EmployeeWage
         const int IS_PART_TIME = 1;
         const int EMPLOYEE_WAGE_PER_HOUR = 20;
 
-        ///Variables
-        int employeeHours = 0;
-
-        /// <summary>
-        /// Checks the employee presence and calculates the wage 
-        /// </summary>
-        public void EmployeeCheckAndWageCalculator()
-        {
-            ///Create a reference of Random class
-            Random random = new Random();
-            ///random function generates three values and checks the condition
-            if(random.Next(0,3) == IS_FULL_TIME)
-            {
-                employeeHours = 8;
-                Console.WriteLine("Employee is Full Time");
-            }
-            else if(random.Next(0,3) == IS_PART_TIME)
-            {
-                employeeHours = 4;
-                Console.WriteLine("Employee is Part Time");
-            }
-            else
-            {
-                Console.WriteLine("Employee is Absent");
-            }
-            Console.WriteLine("Employee Wage : " + EMPLOYEE_WAGE_PER_HOUR * employeeHours);
-        }
         /// <summary>
         /// Defines the entry point of the application.
         /// </summary>
         /// <param name="args">The arguments.</param>
         static void Main(string[] args)
         {
-            ///Create a reference of Program class
-            Program program = new Program();
-            ///Call the function
-            program.EmployeeCheckAndWageCalculator();
+            ///Variables
+            int employeeHours = 0;
+
+            ///Create a reference of Random class
+            Random random = new Random();
+
+            ///Generates three random values and according to the condition assigns employee working hours
+            if (random.Next(0, 3) == IS_FULL_TIME)
+            {
+                employeeHours = 8;
+            }
+            else if(random.Next(0,3) == IS_PART_TIME)
+            {
+                employeeHours = 4;
+            }
+            else
+            {
+                employeeHours = 0;
+            }
+            Console.WriteLine("Employee Wage : " + EMPLOYEE_WAGE_PER_HOUR * employeeHours);
         }
     }
 }
