@@ -10,10 +10,10 @@ namespace EmployeeWage
         /// <param name="args">The arguments.</param>
         static void Main(string[] args)
         {
-            EmployeeWageArray employeeWageArray = new EmployeeWageArray();
-            employeeWageArray.addCompany("Microsoft", 20, 15, 120);
-            employeeWageArray.addCompany("Tesla", 30, 25, 200);
-            employeeWageArray.WageCalculation();
+            EmployeeWageList employeeWageList = new EmployeeWageList();
+            employeeWageList.AddCompany("Microsoft", 20, 15, 120);
+            employeeWageList.AddCompany("Tesla", 30, 25, 200);
+            employeeWageList.WageCalculation();
         }
     }
 }

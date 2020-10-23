@@ -37,13 +37,10 @@ namespace EmployeeWage
         }
 
         /// <summary>
-        /// Converts to string.
+        /// Prints the total wage.
         /// </summary>
-        /// <returns>
-        /// A <see cref="System.String" /> that represents this instance.
-        /// </returns>
-        override
-        public string ToString()
+        /// <returns></returns>
+        public string PrintTotalWage()
         {
             return "Total Employee Wage for" + this.company + " is " + this.totalEmployeeWage;
         }

@@ -1,37 +1,37 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
 namespace EmployeeWage
 {
-    public class EmployeeWageArray
+    public class EmployeeWageList : IComputeWage
     {
         ///Constants
         public const int IS_PART_TIME = 1;
         public const int IS_FULL_TIME = 2;
 
-        private int numOfCompany = 0;
-        private CompanyEmpWage[] companyEmpWageArray;
+        private LinkedList<CompanyEmpWage> companyEmpWageList;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EmployeeWageArray"/> class.
+        /// Initializes a new instance of the <see cref="EmployeeWageList"/> class.
         /// </summary>
-        public EmployeeWageArray()
+        public EmployeeWageList()
         {
-            this.companyEmpWageArray = new CompanyEmpWage[10];
+            this.companyEmpWageList = new LinkedList<CompanyEmpWage>();
         }
 
         /// <summary>
-        /// Adds the company to an array
+        /// Adds the company to an Array List
         /// </summary>
         /// <param name="company">The company.</param>
         /// <param name="empRatePerHour">The emp rate per hour.</param>
         /// <param name="maxWorkingDays">The maximum working days.</param>
         /// <param name="maxWorkingHours">The maximum working hours.</param>
-        public void addCompany(string company, int empRatePerHour, int maxWorkingDays, int maxWorkingHours)
+        public void AddCompany(string company, int empRatePerHour, int maxWorkingDays, int maxWorkingHours)
         {
-            companyEmpWageArray[this.numOfCompany] = new CompanyEmpWage(company, empRatePerHour, maxWorkingDays, maxWorkingHours);
-            numOfCompany++;
+            CompanyEmpWage companyEmpWage = new CompanyEmpWage(company,  empRatePerHour, maxWorkingDays, maxWorkingHours);
+            this.companyEmpWageList.AddLast(companyEmpWage);
         }
 
         /// <summary>
@@ -39,13 +39,12 @@ namespace EmployeeWage
         /// </summary>
         public void WageCalculation()
         {
-            for (int index = 0; index < numOfCompany; index++)
+            foreach ( CompanyEmpWage companyEmpWage in this.companyEmpWageList ) 
             {
-                companyEmpWageArray[index].SetTotalEmployeeWage(this.WageCalculation(this.companyEmpWageArray[index]));
-                Console.WriteLine(this.companyEmpWageArray[index].ToString());
+                companyEmpWage.SetTotalEmployeeWage(this.WageCalculation(companyEmpWage));
+                Console.WriteLine(companyEmpWage.PrintTotalWage());
             }
         }
-
         /// <summary>
         /// Wages the calculation.
         /// </summary>
