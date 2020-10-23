@@ -12,6 +12,7 @@ namespace EmployeeWage
         public const int IS_FULL_TIME = 2;
 
         private LinkedList<CompanyEmpWage> companyEmpWageList;
+        private Dictionary<string, CompanyEmpWage> companyEmpWageDict;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="EmployeeWageList"/> class.
@@ -19,6 +20,7 @@ namespace EmployeeWage
         public EmployeeWageList()
         {
             this.companyEmpWageList = new LinkedList<CompanyEmpWage>();
+            this.companyEmpWageDict = new Dictionary<string, CompanyEmpWage>();
         }
 
         /// <summary>
@@ -30,8 +32,9 @@ namespace EmployeeWage
         /// <param name="maxWorkingHours">The maximum working hours.</param>
         public void AddCompany(string company, int empRatePerHour, int maxWorkingDays, int maxWorkingHours)
         {
-            CompanyEmpWage companyEmpWage = new CompanyEmpWage(company,  empRatePerHour, maxWorkingDays, maxWorkingHours);
+            CompanyEmpWage companyEmpWage = new CompanyEmpWage(company, empRatePerHour, maxWorkingDays, maxWorkingHours);
             this.companyEmpWageList.AddLast(companyEmpWage);
+            this.companyEmpWageDict.Add(company, companyEmpWage);
         }
 
         /// <summary>
@@ -39,7 +42,7 @@ namespace EmployeeWage
         /// </summary>
         public void WageCalculation()
         {
-            foreach ( CompanyEmpWage companyEmpWage in this.companyEmpWageList ) 
+            foreach (CompanyEmpWage companyEmpWage in this.companyEmpWageList)
             {
                 companyEmpWage.SetTotalEmployeeWage(this.WageCalculation(companyEmpWage));
                 Console.WriteLine(companyEmpWage.PrintTotalWage());
@@ -68,7 +71,7 @@ namespace EmployeeWage
                         employeeHours = 8;
                         break;
                     case IS_PART_TIME:
-                        employeeHours = 4; 
+                        employeeHours = 4;
                         break;
                     default:
                         employeeHours = 0;
@@ -78,6 +81,11 @@ namespace EmployeeWage
                 Console.WriteLine("Day " + totalWorkingDays + " Employee Hours : " + employeeHours);
             }
             return totalEmpHrs * companyEmpWage.empRatePerHour;
+        }
+
+        public int GetTotalWage(string company)
+        {
+            return this.companyEmpWageDict[company].totalEmployeeWage;
         }
     }
 }
