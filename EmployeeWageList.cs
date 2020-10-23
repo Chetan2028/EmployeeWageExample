@@ -12,7 +12,7 @@ namespace EmployeeWage
         public const int IS_FULL_TIME = 2;
 
         private LinkedList<CompanyEmpWage> companyEmpWageList;
-        private Dictionary<string, CompanyEmpWage> companyEmpWageDict
+        private Dictionary<string, CompanyEmpWage> companyEmpWageDict;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="EmployeeWageList"/> class.
